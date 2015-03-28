@@ -51,14 +51,14 @@ class CalcioController extends \BaseController {
 		return View::make('calcio.output', compact('league_table', 'standings', 'fixtures'));
 	}
 	
-	public function showTeam()
+	public function showTeam($id)
 	{
-		$team = Footy::getTeam();
+		$team = Footy::getTeam($id);
 		
-		$all_players = Footy::getTeamPlayers();
+		$all_players = Footy::getTeamPlayers($id);
 		$players = $all_players['players'];
 		
-		$team_fixtures = Footy::getTeamFixtures();
+		$team_fixtures = Footy::getTeamFixtures($id);
 		$fixtures = $team_fixtures['fixtures'];
 		
 		return View::make('calcio.team', compact('team', 'players', 'fixtures'));

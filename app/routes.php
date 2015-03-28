@@ -12,7 +12,10 @@ Route::get('/', 'CalcioController@index');
 //Route::post('/', 'CalcioController@showLeagueTable');
 //Route::post('/', 'CalcioController@showFixtures');
 Route::post('/', 'CalcioController@leagueDetails');
-Route::get('/team/19', 'CalcioController@showTeam');
+Route::get('/team/{id}', [
+	'as' => 'team',
+	'uses' => 'CalcioController@showTeam'
+]);
 
 Route::get('test', function()
 {

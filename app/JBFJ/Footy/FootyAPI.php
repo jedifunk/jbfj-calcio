@@ -32,23 +32,23 @@ class FootyAPI {
 		return $league;		
 	}
 	
-	public function getTeam()
+	public function getTeam($id)
 	{
-		$team = $this->client->get("teams/19")->json();
-		//dd($team);
+		$team = $this->client->get('teams/'. $id)->json();
+
 		return $team;		
 	}
 	
-	public function getTeamPlayers()
+	public function getTeamPlayers($id)
 	{
-		$players = $this->client->get("teams/19/players")->json();
+		$players = $this->client->get('teams/'. $id .'/players')->json();
 		
 		return $players;
 	}
 	
-	public function getTeamFixtures()
+	public function getTeamFixtures($id)
 	{
-		$team_fixtures = $this->client->get("teams/19/fixtures")->json();
+		$team_fixtures = $this->client->get('teams/'. $id .'/fixtures')->json();
 		
 		return $team_fixtures;
 	}

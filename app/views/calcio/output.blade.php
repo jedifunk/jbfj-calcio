@@ -9,7 +9,7 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-8">
-			
+			<?php var_dump($league_table); ?>
 			<table class="table table-striped">
 				<tr>
 					<th>Position</th>
