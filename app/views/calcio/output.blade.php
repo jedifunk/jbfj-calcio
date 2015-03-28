@@ -1,23 +1,62 @@
-@extends('calcio.index')
+@extends('layouts.default')
 	
-@section('results')
+@section('content')
 	
-	@foreach ($fixtures as $fixture)
-	
-	<div class=" col-sm-6">
-	
-		<div class="panel panel-default">
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>{{ $league_table['leagueCaption'] }}</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-8">
+			
+			<table class="table table-striped">
+				<tr>
+					<th>Position</th>
+					<th>Club</th>
+					<th>Games Played</th>
+					<th>Points</th>
+					<th>Goals For</th>
+					<th>Goals Against</th>
+					<th>Goal Difference</th>
+				</tr>
+				
+				@foreach ($standings as $club )
+				
+					<tr>
+						<td>{{ $club['position'] }}</td>
+						<td>{{ $club['teamName'] }}</td>
+						<td>{{ $club['playedGames'] }}</td>
+						<td>{{ $club['points'] }}</td>
+						<td>{{ $club['goals'] }}</td>
+						<td>{{ $club['goalsAgainst'] }}</td>
+						<td>{{ $club['goalDifference'] }}</td>
+					</tr>
+					
+				@endforeach
 		
-			<div class="panel-heading"><h3 class="panel-title">Matchday {{ $fixture['matchday'] }} - {{ $fixture['date'] }}</h3></div>
+			</table>
 			
-			<div class="panel-body">{{ $fixture['homeTeamName'] }} {{ $fixture['result']['goalsHomeTeam'] }} : {{ $fixture['result']['goalsAwayTeam'] }} {{ $fixture['awayTeamName'] }}
+		</div>
+		<div class="col-sm-4">
 			
-			</div>
+			<table class="table table-bordered">
+				<tr>
+					<th>Fixtures</th>
+				</tr>
+				@foreach ($fixtures as $fixture)
+		
+					<tr>
+						
+						<td>
+							{{ $fixture['homeTeamName'] }} {{ $fixture['result']['goalsHomeTeam'] }} : {{ $fixture['result']['goalsAwayTeam'] }} {{ $fixture['awayTeamName'] }}
+						</td>
+					
+					</tr>	
+				
+				@endforeach
 		
 		</div>
-	
-	</div>		
-	
-	@endforeach
+	</div>
 
 @stop

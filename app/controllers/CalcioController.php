@@ -12,49 +12,43 @@ class CalcioController extends \BaseController {
 		$this->calcio;
 		
 		$league_list = Footy::getLeagues();
-		
-		return View::make('calcio.index')->withLeagueList($league_list);
+		$league_name = array_pluck($league_list, 'caption', 'id');
 
+		return View::make('calcio.index', compact('league_list', 'league_name'));
 	}
 	
-	public function getLeagues()
-	{
-		$this->calcio;
-		
-		$calcio_search = new Footy();
-		
-		$leagues = $calcio_search->get($uri, $header)->json();
-		//dd($leagues);
-		$league_name = array_fetch($leagues, 'caption');
-		dd($league_name);
-		
-		return $league_name;
-	}
-
-	public function getFixtures()
-	{
-		$this->calcio;
-		
-		$league = $client->get($uri, $header)->json();
-		dd($league);
-		$fixtures = $league['fixtures'];
-		
-		return View::make('calcio.output')->with('fixtures', $fixtures);
-	}
-	
-	public function getLeagueTable()
-	{
-		$this->calcio;
-		
+	public function showLeagueTable()
+	{		
 		$choice = Input::get('league');
-		dd($choice);
+	
+		$league_table = Footy::getLeagueTable($choice);
+		$standings = $league_table['standing'];
 		
-		$league = $client->get($uri, $header)->json();
-		dd($league);
-		//$fixtures = $league['fixtures'];
-		
-		//return View::make('calcio.output')->with('fixtures', $fixtures);
+		return View::make('calcio.table', compact('league_table', 'standings'));
 	}
-
+	
+	public function showFixtures()
+	{
+		$choice = Input::get('league');
+	
+		$league_fixtures = Footy::getFixtures($choice);
+		$fixtures = $league_fixtures['fixtures'];
+		//dd($fixtures);
+		
+		return View::make('calcio.fixtures', compact('fixtures'));
+	}
+	
+	public function leagueDetails()
+	{
+		$choice = Input::get('league');
+	
+		$league_table = Footy::getLeagueTable($choice);
+		$standings = $league_table['standing'];
+		
+		$league_fixtures = Footy::getFixtures($choice);
+		$fixtures = $league_fixtures['fixtures'];
+		
+		return View::make('calcio.output', compact('league_table', 'standings', 'fixtures'));
+	}
 
 }

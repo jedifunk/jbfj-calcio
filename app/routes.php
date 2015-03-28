@@ -8,17 +8,15 @@
 
 //Route::resource('sessions', 'SessionsController');
 
-//Route::get('spotify', 'SpotifyController@index');
-//Route::post('spotify', 'SpotifyController@search');
+Route::get('/', 'CalcioController@index');
+//Route::post('/', 'CalcioController@showLeagueTable');
+//Route::post('/', 'CalcioController@showFixtures');
+Route::post('/', 'CalcioController@leagueDetails');
 
-Route::get('calcio', 'CalcioController@index');
-Route::post('calcio', 'CalcioController@getLeagueTable');
-
-Route::get('calcio/test/{query}', function($query)
+Route::get('test', function()
 {
-	//dd(getenv('API_KEY'));
-	
-	$leagues = Footy::get($query);
+
+	$leagues = Footy::getLeagues();
 	dd($leagues);
-	//dd(Footy::$league_uri);
+
 });

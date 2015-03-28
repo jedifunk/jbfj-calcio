@@ -7,15 +7,15 @@
 		<div class="col-sm-12">
 			<h1>Calcio Search</h1>
 			
-			<div class="form-div">
+			<div class="row form-div">
 				
 				{{ Form::open() }}
 				
-					<div class="form-group">
-						{{ Form::select('league', $league_name, 3, ['class' => 'form-control']) }}
+					<div class="form-group col-sm-6">
+						{{ Form::select('league', array_pluck($league_list, 'caption', 'id'), 354, ['class' => 'form-control']) }}
 					</div>
 					
-					<div class="form-group">
+					<div class="form-group col-sm-6">
 						{{ Form::submit('Choose League', ['class' => 'btn btn-primary']) }}
 					</div>		
 					

@@ -13,12 +13,23 @@ class FootyAPI {
 	
 	public function getLeagues()
 	{
+		$leagues = $this->client->get('/soccerseasons')->json();
 		
-		$leagues = $this->get->json();
-		//dd($leagues);
-		$league_name = array_fetch($leagues, 'caption');
-		//dd($league_name);
-		
-		return $league_name;
+		return $leagues;
 	}
+	
+	public function getFixtures($id)
+	{		
+		$fixtures = $this->client->get("soccerseasons/{$id}/fixtures")->json();
+		
+		return $fixtures;
+	}
+	
+	public function getLeagueTable($id)
+	{
+		$league = $this->client->get("soccerseasons/{$id}/leagueTable")->json();
+
+		return $league;		
+	}
+	
 }
