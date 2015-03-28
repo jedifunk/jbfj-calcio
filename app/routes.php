@@ -12,11 +12,12 @@ Route::get('/', 'CalcioController@index');
 //Route::post('/', 'CalcioController@showLeagueTable');
 //Route::post('/', 'CalcioController@showFixtures');
 Route::post('/', 'CalcioController@leagueDetails');
+Route::get('/team/19', 'CalcioController@showTeam');
 
 Route::get('test', function()
 {
 
-	$leagues = Footy::getLeagues();
-	dd($leagues);
+	$team = Footy::getTeam(19);
+	dd($team);
 
 });

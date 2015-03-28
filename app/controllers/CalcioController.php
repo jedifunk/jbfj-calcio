@@ -27,11 +27,11 @@ class CalcioController extends \BaseController {
 		return View::make('calcio.table', compact('league_table', 'standings'));
 	}
 	
-	public function showFixtures()
+	public function showLeagueFixtures()
 	{
 		$choice = Input::get('league');
 	
-		$league_fixtures = Footy::getFixtures($choice);
+		$league_fixtures = Footy::getLeagueFixtures($choice);
 		$fixtures = $league_fixtures['fixtures'];
 		//dd($fixtures);
 		
@@ -45,10 +45,23 @@ class CalcioController extends \BaseController {
 		$league_table = Footy::getLeagueTable($choice);
 		$standings = $league_table['standing'];
 		
-		$league_fixtures = Footy::getFixtures($choice);
+		$league_fixtures = Footy::getLeagueFixtures($choice);
 		$fixtures = $league_fixtures['fixtures'];
 		
 		return View::make('calcio.output', compact('league_table', 'standings', 'fixtures'));
+	}
+	
+	public function showTeam()
+	{
+		$team = Footy::getTeam();
+		
+		$all_players = Footy::getTeamPlayers();
+		$players = $all_players['players'];
+		
+		$team_fixtures = Footy::getTeamFixtures();
+		$fixtures = $team_fixtures['fixtures'];
+		
+		return View::make('calcio.team', compact('team', 'players', 'fixtures'));
 	}
 
 }

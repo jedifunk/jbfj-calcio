@@ -14,11 +14,11 @@
 				<tr>
 					<th>Position</th>
 					<th>Club</th>
-					<th>Games Played</th>
+					<th>Played</th>
 					<th>Points</th>
-					<th>Goals For</th>
-					<th>Goals Against</th>
-					<th>Goal Difference</th>
+					<th>GF</th>
+					<th>GA</th>
+					<th>GD</th>
 				</tr>
 				
 				@foreach ($standings as $club )

@@ -18,7 +18,7 @@ class FootyAPI {
 		return $leagues;
 	}
 	
-	public function getFixtures($id)
+	public function getLeagueFixtures($id)
 	{		
 		$fixtures = $this->client->get("soccerseasons/{$id}/fixtures")->json();
 		
@@ -32,4 +32,24 @@ class FootyAPI {
 		return $league;		
 	}
 	
+	public function getTeam()
+	{
+		$team = $this->client->get("teams/19")->json();
+		//dd($team);
+		return $team;		
+	}
+	
+	public function getTeamPlayers()
+	{
+		$players = $this->client->get("teams/19/players")->json();
+		
+		return $players;
+	}
+	
+	public function getTeamFixtures()
+	{
+		$team_fixtures = $this->client->get("teams/19/fixtures")->json();
+		
+		return $team_fixtures;
+	}
 }
