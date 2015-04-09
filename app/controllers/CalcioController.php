@@ -38,17 +38,26 @@ class CalcioController extends \BaseController {
 		return View::make('calcio.fixtures', compact('fixtures'));
 	}
 	
-	public function leagueDetails()
+	public function showleagueDetails()
 	{
 		$choice = Input::get('league');
-	
+		
+		// Get League Table
 		$league_table = Footy::getLeagueTable($choice);
 		$standings = $league_table['standing'];
 		
-		$league_fixtures = Footy::getLeagueFixtures($choice);
+		// Get next set of league fixtures
+		$matchday = $league_table['matchday'];
+		$upcoming = $matchday+1;
+		$league_fixtures = Footy::getUpcomingFixtures($choice, $upcoming);
 		$fixtures = $league_fixtures['fixtures'];
 		
-		return View::make('calcio.output', compact('league_table', 'standings', 'fixtures'));
+		// Get previous round results
+		$previous_fixtures = Footy::getLastFixtures($choice, $matchday);
+		$results = $previous_fixtures['fixtures'];
+		
+		return View::make('calcio.output', compact('league_table', 'standings', 'fixtures', 'results'));
+		//return Redirect::to('league/' . $choice);
 	}
 	
 	public function showTeam($id)

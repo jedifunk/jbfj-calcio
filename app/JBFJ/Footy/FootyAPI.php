@@ -25,11 +25,32 @@ class FootyAPI {
 		return $fixtures;
 	}
 	
+	public function getUpcomingFixtures($id, $matchday)
+	{
+		$fixtures = $this->client->get("soccerseasons/{$id}/fixtures/?matchday={$matchday}")->json();
+		
+		return $fixtures;
+	}
+	
+	public function getLastFixtures($id, $matchday)
+	{
+		$fixtures = $this->client->get("soccerseasons/{$id}/fixtures/?matchday={$matchday}")->json();
+		
+		return $fixtures;
+	}
+	
 	public function getLeagueTable($id)
 	{
 		$league = $this->client->get("soccerseasons/{$id}/leagueTable")->json();
-
+		
 		return $league;		
+	}
+	
+	public function getLeagueTeams($id)
+	{
+		$teams = $this->client->get("soccerseasons/{$id}/teams")->json();
+		
+		return $teams;		
 	}
 	
 	public function getTeam($id)
