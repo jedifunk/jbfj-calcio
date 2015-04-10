@@ -9,12 +9,7 @@ class CalcioController extends \BaseController {
 	
 	public function index()
 	{
-		$this->calcio;
-		
-		$league_list = Footy::getLeagues();
-		$league_name = array_pluck($league_list, 'caption', 'id');
-
-		return View::make('calcio.index', compact('league_list', 'league_name'));
+		return View::make('calcio.index');
 	}
 	
 	public function showLeagueTable()
@@ -33,7 +28,6 @@ class CalcioController extends \BaseController {
 	
 		$league_fixtures = Footy::getLeagueFixtures($choice);
 		$fixtures = $league_fixtures['fixtures'];
-		//dd($fixtures);
 		
 		return View::make('calcio.fixtures', compact('fixtures'));
 	}
@@ -56,8 +50,8 @@ class CalcioController extends \BaseController {
 		$previous_fixtures = Footy::getLastFixtures($choice, $matchday);
 		$results = $previous_fixtures['fixtures'];
 		
-		return View::make('calcio.output', compact('league_table', 'standings', 'fixtures', 'results'));
-		//return Redirect::to('league/' . $choice);
+		return View::make('calcio.league', compact('league_table', 'standings', 'fixtures', 'results'));
+		
 	}
 	
 	public function showTeam($id)

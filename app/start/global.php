@@ -79,3 +79,12 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+
+View::composer('layouts.default', function($view)
+{
+	$league_list = Footy::getLeagues();
+	$league_name = array_pluck($league_list, 'caption', 'id');
+	
+	$view->withLeagueList($league_list)->withLeagueName($league_name);
+});

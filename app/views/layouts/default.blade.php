@@ -15,6 +15,9 @@
 	</head>
 	
 	<body>
+		
+		@include('calcio.navbar')
+		
 		<div class="container">
 		
 			@yield('content')

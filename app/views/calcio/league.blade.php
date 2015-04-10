@@ -2,11 +2,11 @@
 	
 @section('content')
 	
-	<div class="row">
+	<header class="row v-sp-sm">
 		<div class="col-sm-12">
 			<h1>{{ $league_table['leagueCaption'] }}</h1>
 		</div>
-	</div>
+	</header>
 	<div class="row">
 		<div class="col-sm-8">
 			

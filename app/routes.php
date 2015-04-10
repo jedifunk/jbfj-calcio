@@ -9,15 +9,14 @@
 //Route::resource('sessions', 'SessionsController');
 
 Route::get('/', 'CalcioController@index');
-//Route::post('/', 'CalcioController@showLeagueTable');
-//Route::post('/', 'CalcioController@showFixtures');
-Route::post('/', 'CalcioController@showleagueDetails');
+Route::post('/', 'CalcioController@showLeagueDetails');
 /*
 Route::post('/league', [
 	'as' => 'league',
-	'uses' => 'CalcioController@showleagueDetails'
+	'uses' => 'CalcioController@showLeagueDetails'
 ]);
 */
+
 
 Route::get('/team/{id}', [
 	'as' => 'team',

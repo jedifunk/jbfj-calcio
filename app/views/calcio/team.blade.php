@@ -2,7 +2,7 @@
 	
 @section('content')
 	
-	<div class="row">
+	<header class="row v-sp-sm">
 		<div class="col-sm-2">
 			{{ HTML::image($team['crestUrl'], $team['name'], ['class' => 'img-responsive']) }}
 		</div>
@@ -10,7 +10,7 @@
 			<h1>{{ $team['name'] }}</h1>
 			<strong>Current Market Value: {{ $team['squadMarketValue'] }}</strong>
 		</div>
-	</div>
+	</header>
 	
 	<div class="row">
 		<div class="col-sm-8">			
