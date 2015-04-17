@@ -8,13 +8,13 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="/"><i class="fa fa-futbol-o fa-fw"></i> Calcio Search</a>
+		      <a class="navbar-brand" href="/"><i class="fa fa-futbol-o fa-fw"></i> <strong>Calcio Search</strong></a>
 		    </div>
 					
-			{{ Form::open(['class' => 'navbar-form navbar-right']) }}
+			{{ Form::open(['action' => 'CalcioController@leagueChoice', 'class' => 'navbar-form navbar-right']) }}
 			
 				<div class="form-group">
-					{{ Form::select('league', array_pluck($league_list, 'caption', 'id'), 354, ['class' => 'form-control']) }}
+					{{ Form::select('league_choice', array_pluck($league_list, 'caption', 'id'), 354, ['class' => 'form-control']) }}
 				</div>
 				
 				<div class="form-group">

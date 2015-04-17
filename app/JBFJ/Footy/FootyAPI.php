@@ -25,14 +25,7 @@ class FootyAPI {
 		return $fixtures;
 	}
 	
-	public function getUpcomingFixtures($id, $matchday)
-	{
-		$fixtures = $this->client->get("soccerseasons/{$id}/fixtures/?matchday={$matchday}")->json();
-		
-		return $fixtures;
-	}
-	
-	public function getLastFixtures($id, $matchday)
+	public function getFixtures($id, $matchday)
 	{
 		$fixtures = $this->client->get("soccerseasons/{$id}/fixtures/?matchday={$matchday}")->json();
 		

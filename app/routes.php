@@ -1,22 +1,18 @@
 <?php
 
 //Route::resource('users', 'UsersController');
-
 //Route::get('login', 'SessionsController@create');
-
 //Route::get('logout', 'SessionsController@destroy');
-
 //Route::resource('sessions', 'SessionsController');
 
 Route::get('/', 'CalcioController@index');
-Route::post('/', 'CalcioController@showLeagueDetails');
-/*
-Route::post('/league', [
+
+Route::post('/', 'CalcioController@leagueChoice');
+
+Route::get('/league/{choice}', [
 	'as' => 'league',
 	'uses' => 'CalcioController@showLeagueDetails'
 ]);
-*/
-
 
 Route::get('/team/{id}', [
 	'as' => 'team',
@@ -31,12 +27,5 @@ Route::get('test', function()
 	
 	$fixtures = Footy::getUpcomingFixtures(357, $matchday);
 	
-	
 	dd($league);
-	
-	//$today = date(DATE_ATOM);
-	//$week = date(DATE_ATOM, strtotime('+7 days'));
-	//dd($fixtures['fixtures'][0]['date']);
-
-	
 });
