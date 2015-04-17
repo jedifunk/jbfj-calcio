@@ -22,10 +22,16 @@ Route::get('/team/{id}', [
 Route::get('test', function()
 {
 	$league = Footy::getLeagueTable(354);
-	$matchday = $league['matchday'];
-	$upcoming = $matchday+1;
 	
-	$fixtures = Footy::getUpcomingFixtures(357, $matchday);
-	
-	dd($league);
+	$params = array(
+	    'q'             => $league['leagueCaption'] . 'Highlights',
+	    'type'          => 'video',
+	    'part'          => 'id, snippet',
+	    'maxResults'    => 3
+	);
+
+	$videoList = Youtube::searchAdvanced($params);
+
+	return View::make('calcio.test', compact('videoList'));
+
 });

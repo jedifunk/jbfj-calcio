@@ -35,7 +35,17 @@ class CalcioController extends \BaseController {
 		$previous_fixtures = Footy::getFixtures($choice, $matchday);
 		$results = $previous_fixtures['fixtures'];
 		
-		return View::make('calcio.league', compact('league_table', 'standings', 'fixtures', 'results'));
+		// Get League Videos
+		$params = array(
+		    'q'             => $league_table['leagueCaption'] . 'Highlights',
+		    'type'          => 'video',
+		    'part'          => 'id, snippet',
+		    'maxResults'    => 3
+		);
+	
+		$videoList = Youtube::searchAdvanced($params);
+		
+		return View::make('calcio.league', compact('league_table', 'standings', 'fixtures', 'results', 'videoList'));
 		
 	}
 	

@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		
 		'JBFJ\Footy\FootyServiceProvider',
+		'Alaouy\Youtube\YoutubeServiceProvider',
 
 	),
 

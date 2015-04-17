@@ -7,6 +7,19 @@
 			<h1>{{ $league_table['leagueCaption'] }}</h1>
 		</div>
 	</header>
+	<div class="row v-sp-sm">
+	
+		@foreach ($videoList as $video)
+		
+			<div class="col-sm-4">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" id="player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/{{ $video->id->videoId }}"></iframe>
+				</div>
+			</div>
+  
+  		@endforeach
+  	
+	</div>
 	<div class="row">
 		<div class="col-sm-8">
 			
